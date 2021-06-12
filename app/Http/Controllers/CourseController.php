@@ -2,12 +2,17 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Course;
 use Illuminate\Http\Request;
 
 class CourseController extends Controller
 {
-    public function show() {
-//        return view('courses/index');
-        return 'This is the schedule page.';
+    public function index()
+    {
+        $courses = Course::all();
+
+        return view('courses/index', [
+            'courses' => $courses,
+        ]);
     }
 }

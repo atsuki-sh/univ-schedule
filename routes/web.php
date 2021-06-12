@@ -17,4 +17,4 @@ use App\Http\Controllers\CourseController;
 Route::get('/', function () {
     return view('welcome');});
 
-Route::get('/{user_id}/schedule', [CourseController::class, 'show']);
+Route::get('/{user_id}/schedule', [CourseController::class, 'index']);

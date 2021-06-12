@@ -14,7 +14,12 @@ class CreateCoursesTable extends Migration
     public function up()
     {
         Schema::create('courses', function (Blueprint $table) {
-            $table->id();
+            $table->unsignedBigInteger('course_index');
+//            $table->foreignId('user_id')->constrained('users');
+            $table->string('title');
+            $table->text('note');
+            $table->string('place', 20);
+            $table->string('teacher', 20);
             $table->timestamps();
         });
     }
