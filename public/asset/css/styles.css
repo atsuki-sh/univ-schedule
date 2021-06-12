@@ -1,0 +1,137 @@
+body {
+    box-sizing: border-box;
+}
+
+nav {
+    margin-bottom: 30px;
+}
+
+.table {
+    width: 90%;
+    margin: 0 auto;
+}
+
+th {
+    background-color: yellowgreen;
+    text-align: center;
+    line-height: 50px;
+}
+
+.table td {
+    padding: 6px;
+    text-align: center;
+}
+
+td h5 {
+    line-height: 48px;
+}
+
+td:hover {
+    cursor: pointer;
+     background-color: #dee2e6;
+    /*border: 2px solid green;*/
+}
+
+tr > * {
+    width: 50px;
+    height: 50px;
+}
+
+p {
+    margin: 0;
+}
+
+/* モーダルを上からスライドではなくフェードインさせる */
+.modal.fade:not(.show) .modal-dialog {
+    transform: translate(0,0) scale(0.8);
+}
+
+/* input系のスタイルをリセット */
+input, button, textarea, select {
+    margin: 0;
+    padding: 0;
+    background: none;
+    border: none;
+    border-radius: 0;
+    outline: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+}
+
+input, textarea {
+    padding: 6px 12px;
+    width: 100%;
+}
+
+.modal-body {
+    padding: 12px 28px;
+}
+
+input[type="text"]:focus,
+textarea:focus {
+    box-shadow: 0 0 7px #1abc9c;
+    border: 1px solid #1abc9c;
+}
+
+/* 削除ボタンだけ左寄せ */
+.modal-footer {
+    justify-content: flex-end;
+}
+
+.modal-footer >:first-child {
+    margin-right: auto;
+}
+
+.btn-danger {
+    color: red;
+    background-color: white;
+    border: none;
+}
+
+.fas {
+    margin-right: 8px;
+}
+
+.item {
+    display: flex;
+    align-items: center;
+}
+
+.item:first-child {
+    align-items: flex-start;
+}
+
+.fa-pen {
+    padding-top: 9px;
+}
+
+.page-menu {
+    width: 90%;
+    margin: 0 auto;
+    display: flex;
+    margin-bottom: 30px;
+}
+
+.page-menu a {
+    color: black;
+    margin-right: 30px;
+    font-size: large;
+    text-decoration: none;
+}
+
+.page-menu >:first-child {
+    border-bottom: 3px solid blue;
+}
+
+.page-menu >:last-child {
+    margin-left: auto;
+}
+
+.fa-cog {
+    cursor: pointer;
+}
+
+#color {
+    width: 200px;
+}
