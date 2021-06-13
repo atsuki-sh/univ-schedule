@@ -18,32 +18,37 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
-                <input type="text" class="modal-title h5" id="input-title" placeholder="タイトルを入力" value="">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
+{{--                タイトル--}}
+                <input type="text" class="modal-input h5" id="input-title" placeholder="タイトルを入力" value="">
+                <h5 class="show-data" id="modal-title"></h5>
             </div>
             <div class="modal-body">
-                <form id="course">
-                    <div class="item">
-                        <i class="fas fa-pen"></i>
-                        <textarea id="input-note" placeholder="メモを入力" rows="5"></textarea>
-                    </div>
-                    <div class="item">
-                        <i class="fas fa-map-marker-alt fa-lg"></i>
-                        <input type="text" class="modal-title" id="input-place" placeholder="場所を入力" value="">
-                    </div>
-                    <div class="item">
-                        <i class="fas fa-user fa-lg"></i>
-                        <input type="text" class="modal-title" id="input-teacher" placeholder="先生を入力" value="">
-                    </div>
-                </form>
+                <div class="item">
+{{--                    メモ--}}
+                    <i class="fas fa-pen"></i>
+                    <textarea class="modal-input" id="input-note" placeholder="メモを入力" rows="5"></textarea>
+                    <p class="show-data" id="modal-note"></p>
+                </div>
+                <div class="item">
+{{--                    場所--}}
+                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                    <input type="text" class="modal-input" id="input-place" placeholder="場所を入力" value="">
+                    <p class="show-data" id="modal-place"></p>
+                </div>
+                <div class="item">
+{{--                    先生--}}
+                    <i class="fas fa-user fa-lg"></i>
+                    <input type="text" class="modal-input" id="input-teacher" placeholder="先生を入力" value="">
+                    <p class="show-data" id="modal-teacher"></p>
+                </div>
             </div>
             <div class="modal-footer">
-                <!-- <button type="button" class="btn btn-secondary" data-dismiss="modal" id="close-btn">Close</button> -->
-                <button type="reset" class="btn btn-danger" data-dismiss="modal">削除</button>
-                <button type="button" class="btn btn-light" data-dismiss="modal">キャンセル</button>
-                <button type="button" class="btn btn-primary" id="ok-btn" data-dismiss="modal">OK</button>
+                <button type="button" class="btn btn-danger" id="btn-delete" data-dismiss="modal">削除</button>
+                <button type="button" class="btn btn-light" id="btn-close" data-dismiss="modal">閉じる</button>
+                <button type="button" class="btn btn-light" id="btn-cancel">キャンセル</button>
+                <button type="button" class="btn btn-primary" id="btn-edit">編集</button>
+                <button type="button" class="btn btn-primary" id="btn-create">作成</button>
+                <button type="button" class="btn btn-primary" id="btn-submit">完了</button>
             </div>
         </div>
     </div>
