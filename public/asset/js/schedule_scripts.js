@@ -1,11 +1,18 @@
 // index.blade.phpで定義したLaravel.coursesを使う
 console.log(Laravel.courses);
 
+// POST通信のためにCSRFトークンを発行
+$.ajaxSetup({
+    headers: {
+        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+    }
+});
+
 // tdのidとデータのcourse_indexが一致したら、そのデータのタイトルをtdに出力する
 Laravel.courses.forEach(function(course) {
     for(let i=1; i<=25; i++) {
-        if($('#index_'+i).is(`[id = index_${course['course_index']}]`)) {
-            $('#index_' + i).html(`<h5>${course['title']}</h5>`);
+        if($(`#${i}`).is(`[id = ${course['course_index']}]`)) {
+            $(`#${i}`).html(`<h5>${course['title']}</h5>`);
         }
     }
 });
@@ -18,11 +25,12 @@ $('td').click(function() {
     $('#btn-submit').hide();
 
     const $id = $(this).attr('id');
+    $('#input-title').attr('data-index', $id);
 
     // クリックされたtdのデータをモーダルに埋め込む
     // 途中でbreakしたいので、forEachじゃなくてsomeを使う
     Laravel.courses.some(function(course) {
-        let course_index = 'index_' + course['course_index']
+        let course_index = String(course['course_index']);
 
         if($id === course_index) {
             $('.modal').removeClass('empty');
@@ -90,14 +98,78 @@ $('#btn-cancel').click(function() {
 $('#btn-submit').click(function() {
     // 作成データ
     if($('.modal').hasClass('empty')) {
-
+        $.ajax({
+            type: 'post', // HTTP通信の種類
+            url: 'schedule/create', // 通信したいURL
+            dataType: 'json',
+            data: {
+                course_index: $('#input-title').data('index'),
+                title: $('#input-title').val(),
+                note: $('#input-note').val(),
+                place: $('#input-place').val(),
+                teacher: $('#input-teacher').val(),
+            },
+        })
+            // 通信に成功したとき
+            .done((res)=>{
+                console.log(res.message);
+            })
+            // 通信に失敗したとき
+            .fail((error)=>{
+                console.log(error.statusText);
+            })
     }
     // 編集データ
     else {
-
+        $.ajax({
+            type: 'post', // HTTP通信の種類
+            url: 'schedule/update', // 通信したいURL
+            dataType: 'json',
+            data: {
+                course_index: $('#input-title').data('index'),
+                title: $('#input-title').val(),
+                note: $('#input-note').val(),
+                place: $('#input-place').val(),
+                teacher: $('#input-teacher').val(),
+            },
+        })
+            // 通信に成功したとき
+            .done((res)=>{
+                console.log(res.message);
+            })
+            // 通信に失敗したとき
+            .fail((error)=>{
+                console.log(error.statusText);
+            })
     }
+
+    // ページをリロードして変更を適用
+    window.setTimeout(function() {
+        window.location.reload();
+    }, 1000);
 });
 
-$('.btn-delete').click(function() {
+// データの削除
+$('#btn-delete').click(function() {
+    $.ajax({
+        type: 'post',
+        url: 'schedule/delete',
+        dataType: 'json',
+        data: {
+            course_index: $('#input-title').data('index'),
+        }
+    })
+        // 通信に成功したとき
+        .done((res)=>{
+            console.log(res.message);
+        })
+        // 通信に失敗したとき
+        .fail((error)=>{
+            console.log(error.statusText);
+        })
 
+    // ページをリロードして変更を適用
+    window.setTimeout(function() {
+        window.location.reload();
+    }, 1000);
 });

@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>スケジュール管理アプリ</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.15.3/css/all.css" integrity="sha384-SZXxX4whJ79/gErwcOYf+zWLeJdY/qpuqC4cAa9rOGUstPomtqpuNWT9wdPEn2fk" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('asset/css/styles.css') }}">
-    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js" integrity="sha256-2Kok7MbOyxpgUVvAk/HJ2jigOSYS2auK4Pfzbm7uH60=" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js" integrity="sha384-wHAiFfRlMFy6i5SRaxvfOCifBUQy1xHdJ/yoi7FRNXMRBu5WHdZYu1hA6ZOblgut" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/js/bootstrap.min.js" integrity="sha384-B0UglyR+jN6CkvvICOB2joaf5I4l3gm9GU6Hc1og6Ls7i6U/mkkaduKaBhlAXv9k" crossorigin="anonymous"></script>
 </head>
@@ -19,7 +20,7 @@
         <div class="modal-content">
             <div class="modal-header">
 {{--                タイトル--}}
-                <input type="text" class="modal-input h5" id="input-title" placeholder="タイトルを入力" value="">
+                <input type="text" class="modal-input h5" id="input-title" data-index="" placeholder="タイトルを入力" value="">
                 <h5 class="show-data" id="modal-title"></h5>
             </div>
             <div class="modal-body">
@@ -43,7 +44,7 @@
                 </div>
             </div>
             <div class="modal-footer">
-                <button type="button" class="btn btn-danger" id="btn-delete" data-dismiss="modal">削除</button>
+                <button type="button" class="btn btn-danger" id="btn-delete">削除</button>
                 <button type="button" class="btn btn-light" id="btn-close" data-dismiss="modal">閉じる</button>
                 <button type="button" class="btn btn-light" id="btn-cancel">キャンセル</button>
                 <button type="button" class="btn btn-primary" id="btn-edit">編集</button>
@@ -81,11 +82,11 @@
     @for($i=1; $i<=25; $i+=5)
         <tr>
             <th scope="row">{{ ($i-1) / 5 + 1}}</th>
-            <td id="index_{{ $i }}"></td>
-            <td id="index_{{ $i+1 }}"></td>
-            <td id="index_{{ $i+2 }}"></td>
-            <td id="index_{{ $i+3 }}"></td>
-            <td id="index_{{ $i+4 }}"></td>
+            <td id="{{ $i }}"></td>
+            <td id="{{ $i+1 }}"></td>
+            <td id="{{ $i+2 }}"></td>
+            <td id="{{ $i+3 }}"></td>
+            <td id="{{ $i+4 }}"></td>
         </tr>
     @endfor
     </tbody>
