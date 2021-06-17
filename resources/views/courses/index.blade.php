@@ -26,19 +26,19 @@
             <div class="modal-body">
                 <div class="item">
 {{--                    メモ--}}
-                    <i class="fas fa-pen"></i>
+                    <i class="fas fa-pen fa-lg fa-fw"></i>
                     <textarea class="modal-input" id="input-note" placeholder="メモを入力" rows="5"></textarea>
                     <p class="show-data" id="modal-note"></p>
                 </div>
                 <div class="item">
 {{--                    場所--}}
-                    <i class="fas fa-map-marker-alt fa-lg"></i>
+                    <i class="fas fa-map-marker-alt fa-lg fa-fw"></i>
                     <input type="text" class="modal-input" id="input-place" placeholder="場所を入力" value="">
                     <p class="show-data" id="modal-place"></p>
                 </div>
                 <div class="item">
 {{--                    先生--}}
-                    <i class="fas fa-user fa-lg"></i>
+                    <i class="fas fa-user fa-lg fa-fw"></i>
                     <input type="text" class="modal-input" id="input-teacher" placeholder="先生を入力" value="">
                     <p class="show-data" id="modal-teacher"></p>
                 </div>
@@ -60,8 +60,8 @@
 </nav>
 
 <div class="page-menu">
-    <a href="#">スケジュール</a>
-    <a href="#">タスク一覧</a>
+    <a id="sch" href="#">スケジュール</a>
+    <a id="task" href="#">タスク一覧</a>
     <i class="fas fa-cog fa-2x"></i>
 </div>
 
