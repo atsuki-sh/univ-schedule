@@ -15,7 +15,7 @@ use App\Http\Controllers\CourseController;
 */
 
 Route::get('/', function () {
-    return view('welcome');});
+    return view('home');});
 
 // スケジュール画面
 Route::get('/{user_id}/schedule', [CourseController::class, 'index'])->name('course.index');
