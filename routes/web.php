@@ -25,3 +25,7 @@ Route::post('/{user_id}/schedule/create', [CourseController::class, 'create'])->
 Route::post('/{user_id}/schedule/update', [CourseController::class, 'update'])->name('course.update');
 //コース削除
 Route::post('/{user_id}/schedule/delete', [CourseController::class, 'delete'])->name('course.delete');
+
+Route::middleware(['auth:sanctum', 'verified'])->get('/dashboard', function () {
+    return view('dashboard');
+})->name('dashboard');

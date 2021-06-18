@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Course;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
@@ -39,6 +40,7 @@ class CourseController extends Controller
             'note' => $request->note,
             'place' => $request->place,
             'teacher' => $request->teacher,
+            'updated_at' => Carbon::now(),
         ]);
 
         redirect('/{user_id}/schedule');
